@@ -141,28 +141,30 @@
                 "responses": {
 
                 }
+            }
+        },
+        "/videos/{id}/status": {
+            "get": {
+                "tags": ["video"],
+                "summary": "get video status",
+                "description": "",
+                "parameters": [
+                    {
+                        "type": "apiKey",
+                        "name": "Authorization",
+                        "in": "header"
+                    },
+                    {
+                        "name": "id",
+                        "description": "Video id",
+                        "required": true,
+                        "type": "string",
+                        "in": "path"
+                    }
+                ]
+            }
             },
-            "/videos/{id}/status": {
-                "get": {
-                    "tags": ["video"],
-                    "summary": "get video status",
-                    "description": "",
-                    "parameters": [
-                        {
-                            "type": "apiKey",
-                            "name": "Authorization",
-                            "in": "header"
-                        },
-                        {
-                            "name": "id",
-                            "description": "Video id",
-                            "required": true,
-                            "type": "string",
-                            "in": "path"
-                        }
-                    ]
-            },
-            "/signup/basic": {
+        "/signup/basic": {
                 "post": {
                     "tags": ["signup"],
                     "summary": "Base user registration",
@@ -190,7 +192,7 @@
                     }
                 }
             },
-            "/signin/basic": {
+        "/signin/basic": {
                 "post": {
                     "tags": ["signin"],
                     "summary": "Basic user authorization",
@@ -218,64 +220,6 @@
                     }
                 }
             }
-        },
-
-        "/signup/basic": {
-            "post": {
-                "tags": ["signup"],
-                "summary": "Base user registration",
-                "description": "",
-                "consumes": ["application/json"],
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Basic user signup",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/signup"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful response",
-                        "schema": {
-                            "$ref": "#/definitions/User"
-                        }
-                    }
-                }
-            }
-        },
-        "/signin/basic": {
-            "post": {
-                "tags": ["signin"],
-                "summary": "Basic user authorization",
-                "description": "",
-                "consumes": ["application/json"],
-                "produces": ["application/json"],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Basic user authorization",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/signinBasic"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful response",
-                        "schema": {
-                            "$ref": "#/definitions/User"
-                        }
-                    }
-                }
-            }
-        }
     },
     "securityDefinitions": {
         "api_token": {
