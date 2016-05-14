@@ -1,0 +1,335 @@
+{"swagger": "2.0",
+    "info": {
+        "description": "sales CMS",
+        "version": "1.0.0",
+        "title": "Sales CMS API documentation",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "apiteam@swagger.io"
+        },
+        "license": {
+            "name": "Node.js 0.10.25",
+            "url": "https://nodejs.org"
+        }
+    },
+    "host": "", "basePath": "/api/v1",
+    "tags": [
+        {
+            "name": "signup",
+            "description": "User registration",
+            "externalDocs": {
+                "description": ""
+            }
+        },
+        {
+            "name": "signin",
+            "description": "User authorization",
+            "externalDocs": {
+                "description": ""
+            }
+        },
+        {
+            "name": "video",
+            "description": "Operations about video",
+            "externalDocs": {
+                "description": ""
+            }
+        }
+    ],
+    "schemes": ["http"],
+    "paths": {
+        "/videos": {
+            "post": {
+                "tags": ["video"],
+                "summary": "Base user registration",
+                "description": "",
+                "parameters": [
+                    {
+                        "type": "apiKey",
+                        "name": "Authorization",
+                        "in": "header"
+                    },
+                    {
+                        "name": "video",
+                        "description": "File to upload",
+                        "in": "formData",
+                        "type": "file",
+                        "default": "",
+                        "required": true
+                    },
+                    {
+                        "name": "startTime",
+                        "description": "start Video Time",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "00:00:00",
+                        "required": true
+                    },
+                    {
+                        "name": "endTime",
+                        "description": "end Video Time",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "00:00:00",
+                        "required": true
+                    }
+                ],
+                "responses": {
+
+                }
+            }
+        },
+        "/videos/{id}": {
+            "get": {
+                "tags": ["video"],
+                "summary": "Base user registration",
+                "description": "",
+                "parameters": [
+                    {
+                        "type": "apiKey",
+                        "name": "Authorization",
+                        "in": "header"
+                    },
+                    {
+                        "name": "id",
+                        "description": "Video id",
+                        "required": true,
+                        "type": "string",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+
+                }
+            }
+        },
+        "/videos/{id}/restart": {
+            "patch": {
+                "tags": ["video"],
+                "summary": "restart video upload",
+                "description": "",
+                "parameters": [
+                    {
+                        "type": "apiKey",
+                        "name": "Authorization",
+                        "in": "header"
+                    },
+                    {
+                        "name": "id",
+                        "description": "Video id",
+                        "required": true,
+                        "type": "string",
+                        "in": "path"
+                    },
+                    {
+                        "name": "startTime",
+                        "description": "start Video Time",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "00:00:00",
+                        "required": true
+                    },
+                    {
+                        "name": "endTime",
+                        "description": "end Video Time",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "00:00:00",
+                        "required": true
+                    }
+                ],
+                "responses": {
+
+                }
+            },
+            "/videos/{id}/status": {
+                "get": {
+                    "tags": ["video"],
+                    "summary": "get video status",
+                    "description": "",
+                    "parameters": [
+                        {
+                            "type": "apiKey",
+                            "name": "Authorization",
+                            "in": "header"
+                        },
+                        {
+                            "name": "id",
+                            "description": "Video id",
+                            "required": true,
+                            "type": "string",
+                            "in": "path"
+                        }
+                    ]
+            },
+            "/signup/basic": {
+                "post": {
+                    "tags": ["signup"],
+                    "summary": "Base user registration",
+                    "description": "",
+                    "consumes": ["application/json"],
+                    "produces": ["application/json"],
+                    "parameters": [
+                        {
+                            "in": "body",
+                            "name": "body",
+                            "description": "Basic user signup",
+                            "required": true,
+                            "schema": {
+                                "$ref": "#/definitions/signup"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "successful response",
+                            "schema": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                }
+            },
+            "/signin/basic": {
+                "post": {
+                    "tags": ["signin"],
+                    "summary": "Basic user authorization",
+                    "description": "",
+                    "consumes": ["application/json"],
+                    "produces": ["application/json"],
+                    "parameters": [
+                        {
+                            "in": "body",
+                            "name": "body",
+                            "description": "Basic user authorization",
+                            "required": true,
+                            "schema": {
+                                "$ref": "#/definitions/signinBasic"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "successful response",
+                            "schema": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/signup/basic": {
+            "post": {
+                "tags": ["signup"],
+                "summary": "Base user registration",
+                "description": "",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Basic user signup",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/signup"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
+            }
+        },
+        "/signin/basic": {
+            "post": {
+                "tags": ["signin"],
+                "summary": "Basic user authorization",
+                "description": "",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Basic user authorization",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/signinBasic"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful response",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "api_token": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "signup": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "required": true,
+                    "default": ""
+                },
+                "firstName": {
+                    "type": "string",
+                    "required": true,
+                    "default": ""
+                },
+                "lastName": {
+                    "type": "string",
+                    "required": true,
+                    "default": ""
+                },
+                "password": {
+                    "type": "string",
+                    "required": true,
+                    "default": ""
+                },
+                "confirmPassword": {
+                    "type": "string",
+                    "required": true,
+                    "default": ""
+                }
+            }
+        },
+        "signinBasic": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "required": true,
+                    "default": ""
+                },
+                "password": {
+                    "type": "string",
+                    "required": true,
+                    "default": ""
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }}
