@@ -1,0 +1,5 @@
+.idea
+config/dev
+config/prod
+config/test
+node_modules
