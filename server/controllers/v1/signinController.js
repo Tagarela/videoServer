@@ -57,7 +57,7 @@ class SigninController extends Controller {
         };
 
         user.token = jwt.sign(tokenParams, config.jwtKey);
-    console.log(user.token);
+
         res.send(user)
     }
 

@@ -1,7 +1,7 @@
 {
-  "name": "salesCms",
+  "name": "videoServer",
   "version": "1.0.0",
-  "description": "Cms for sales",
+  "description": "video Server",
   "main": "app.js",
   "private": true,
   "scripts": {

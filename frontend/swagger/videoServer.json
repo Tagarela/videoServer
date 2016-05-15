@@ -147,7 +147,7 @@
             "get": {
                 "tags": ["video"],
                 "summary": "get video status",
-                "description": "",
+                "description": " get video status and video link",
                 "parameters": [
                     {
                         "type": "apiKey",

@@ -75,6 +75,12 @@ $ NODE_ENV=prod npm start
 NODE_ENV=prod forever start app.js
 ```
 
+Run Unit Tests
+--------------
+```sh
+npm test
+```
+
 [node.js]: <http://nodejs.org>
 [express]: <http://expressjs.com>
 [ffmpeg]: <http://www.ubuntugeek.com/install-ffmpeg-on-ubuntu-14-10-using-ppa.html>
