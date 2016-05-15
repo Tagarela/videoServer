@@ -9,6 +9,7 @@ var router = require('./routes');
 var app = module.exports = express();
 
 app.use(express.static(__dirname + '/../frontend'));
+app.use(express.static(__dirname + '/../uploads'));
 app.use(express.static(__dirname + '/../frontend/swagger'));
 
 app.use(bodyParser.json({limit: '50mb'}));

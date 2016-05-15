@@ -6,6 +6,7 @@ var fs = require('fs-extra');
 var Video = require('./../../models/v1').videos;
 var moment = require('moment');
 var Validator = require('./../../validators/v1').video;
+var config = require('./../../../config');
 
 /**
  * Video controller
@@ -125,8 +126,13 @@ class VideosController extends Controller {
                 error.status = 401;
                 return next(error);
             }
-
-            res.send({status: video.status});
+            let response = {
+                status: video.status
+            }
+            if(video.status == 1){
+                response.link = config.server.baseUrl + '/' + req.user.id + '/videos/video/' + video.name;
+            }
+            res.send(response);
         });
     }
 
@@ -151,8 +157,6 @@ class VideosController extends Controller {
                 return next(error);
             }
 
-//            video.link = config.server.baseUrl+'/tmp/'+video.name;
-//            console.log(config.server.baseUrl+'/tmp/'+video.name);
             res.send(video);
         });
     }
@@ -198,7 +202,7 @@ class VideosController extends Controller {
                     .output(videoFolderPath + '/video/' +  video.name)
                     .on('end', function (err) {
                         if (!err) {
-                            console.log('conversion Done');
+                            log.info('conversion Done');
                             video.status = 1;
                             video.save();
                             /** remove tmp video as we not need it **/
